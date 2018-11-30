@@ -41,7 +41,7 @@ The APIs that are exposed in this solution are given below.
 11. Structure API
     * Binary
 
-The above APIs are categorized under FHIR R2 layout.
+The above APIs are categorized according to the [FHIR R2 layout](https://www.hl7.org/fhir/resourcelist.html).
 
 For an example lets Consider Diagnostic report resource under Diagnostics API.
 
@@ -56,23 +56,23 @@ The diagram given below depicts the process flow of the solution.
 
 **Step 1:**
 
-Other than the parameters that are need to search the Diagnostic report, the Hospital-Name parameter too will be requested by the user. This is to identify which EHR system the hospital belongs to.
-
 API calls the Diagnostic report endpoint within the WSO2 EI via the API Gateway.
+
+Other than the parameters that are need to search the Diagnostic report, the Hospital-Name parameter too will be requested by the user. This is to identify which EHR system the hospital belongs to.
 
 **Step 2:**
 
 WSO2 EI captures the Hospital-Name parameter which is appended in the URL received by the Diagnostic report API.
 
-The local registry entry stores the EHR system which the hospital belongs to as a key-value pair.
-In this scenario it is assumed that a particular hospital belongs to a specific EHR system as given below.
+The local registry entry stores the hospital name and the EHR system as a key-value pair.
+In this scenario it is assumed that a particular hospital belongs to a single EHR system as given below.
 
 **Local Registry Entry**
 
 * Hospital A : Cerner
 * Hospital B : Epic
 
-The value paired up with the Hospital-Name (i.e. Cerner or Epic) is returned to the WSO2 EI to validate.
+Next, the value paired up with the Hospital-Name (i.e. Cerner or Epic) is returned to the WSO2 EI to validate.
 
 validation is carried out to check where there is any EHR system specified under the given hospital name, if no system is found then a fault message is sent to the API referring to the unavailability of the EHR system.
 If a system is found, then the process will continue.
@@ -99,7 +99,7 @@ Given below are sample synapse configurations which are used to fetch the Diagno
 
 **Properties**
 
-* Patient: The patient whose diagnostic report belongs to. 
+* Patient: The patient Id whose diagnostic report belongs to. 
 * subject: The subject (Patient) of the report. 
 * startDate[optional]: starting date of the report. 
 * endDate[optional]: end date of the report. 
