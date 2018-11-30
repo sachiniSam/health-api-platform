@@ -1,6 +1,6 @@
-#Health-care API Platform
+# Health-care API Platform
 
-#####Products: WSO2 EI 6.4.0, WSO2 APIM 2.6.0, WSO2 EI Cerner connector, WSO2 EI Epic connector.
+##### Products: WSO2 EI 6.4.0, WSO2 APIM 2.6.0, WSO2 EI Cerner connector, WSO2 EI Epic connector.
 
 The APIs that are exposed in this solution are given below.
 
@@ -48,7 +48,7 @@ For an example lets Consider Diagnostic report resource under Diagnostics API.
 **Use case**- Consider a scenario where a patient needs to get access to his/her Diagnostic report from an existing electronic health record (EHR) maintained by an EHR system such as Cerner and Epic.
           Using these exposed APIs patient gets the opportunity to retrieve the Diagnostic report by providing  know parameters such as Hospital Name and  known parameters like patient Id.
           
-This solution is implemented to support Cerner Millennium EHR system and Epic FHIR supported EHR system.
+This solution is implemented to support [Cerner Millennium EHR system](https://fhir.cerner.com/millennium/dstu2/) and [Epic FHIR](https://open.epic.com/Clinical/Report) supported EHR system.
 
 The diagram given below depicts the process flow of the solution.
 
@@ -69,8 +69,8 @@ In this scenario it is assumed that a particular hospital belongs to a specific 
 
 **Local Registry Entry**
 
-Hospital A : Cerner
-Hospital B : Epic
+* Hospital A : Cerner
+* Hospital B : Epic
 
 The value paired up with the Hospital-Name (i.e. Cerner or Epic) is returned to the WSO2 EI to validate.
 
@@ -85,7 +85,7 @@ The diagram below explains the process flow within the WSO2 EI
 The switch mediator routes the request to the WSO2 EI Cerner connector or WSO2 EI Epic connector based on the EHR system the hospital belongs to.
 Given below are sample synapse configurations which are used to fetch the Diagnostic report from EHR systems.
 
-#####Cerner SearchDiagnosticReport:
+##### Cerner SearchDiagnosticReport:
 
 ```xml
 <cerner.searchDiagnosticReport>
@@ -105,7 +105,7 @@ Given below are sample synapse configurations which are used to fetch the Diagno
 * endDate[optional]: end date of the report. 
 * count[optional]: The maximum number of results to return per page. 
 
-#####Epic SearchDiagnosticReport
+##### Epic SearchDiagnosticReport
 ```xml
 <epic.searchDiagnosticReport>
     <id>{$ctx:id}</id>
@@ -125,7 +125,7 @@ Given below are sample synapse configurations which are used to fetch the Diagno
 
 The sample request sent by the 2 systems are given below.
 
-#####Sample REST request which is handled by the Cerner searchDiagnosticReport
+##### Sample REST request which is handled by the Cerner searchDiagnosticReport
 ```
 {
   "base": "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca",
@@ -135,7 +135,7 @@ The sample request sent by the 2 systems are given below.
 }
 ```
 
-#####Sample REST request which is handled by the Epic searchDiagnosticReport
+##### Sample REST request which is handled by the Epic searchDiagnosticReport
 ```
 {
  "base": “https://open-ic.epic.com/FHIR/api/FHIR/DSTU2/",
