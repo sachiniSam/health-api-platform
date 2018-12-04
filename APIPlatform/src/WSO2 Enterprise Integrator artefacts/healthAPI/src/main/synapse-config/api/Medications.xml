@@ -5,9 +5,9 @@
             <!--Capture the header from the request -->
             <property expression="$url:hospitalName" name="hospitalParam" scope="default" type="STRING"/>
             <!--Obtain the value for the respected header parameter-->
-            <property expression="get-property(get-property('hospitalParam'))" name="hospitalSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <property expression="get-property(get-property('hospitalParam'))" name="ehrSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
             <!--Check if the header is located in the local registry entry-->
-            <filter xpath="boolean(get-property('hospitalSystem'))">
+            <filter xpath="boolean(get-property('ehrSystem'))">
                 <then>
                     <property expression="$url:id" name="id" scope="default" type="STRING"/>
                     <property expression="$url:patient" name="patient" scope="default" type="STRING"/>
@@ -15,7 +15,7 @@
                     <property expression="$url:count" name="count" scope="default" type="STRING"/>
                     <property expression="$url:startEffectiveDate" name="startEffectiveDate" scope="default" type="STRING"/>
                     <property expression="$url:endEffectiveDate" name="endEffectiveDate" scope="default" type="STRING"/>
-                    <switch source="$ctx:hospitalSystem">
+                    <switch source="$ctx:ehrSystem">
                         <case regex="Cerner">
                             <cerner.init>
                                 <base>https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca</base>
@@ -68,18 +68,18 @@
             <!--Capture the header from the request -->
             <property expression="$url:hospitalName" name="hospitalParam" scope="default" type="STRING"/>
             <!--Obtain the value for the respected header parameter-->
-            <property expression="get-property(get-property('hospitalParam'))" name="hospitalSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <property expression="get-property(get-property('hospitalParam'))" name="ehrSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
             <log level="custom">
-                <property expression="$ctx:hospitalSystem" name="Hospital Registry value"/>
+                <property expression="$ctx:ehrSystem" name="Hospital Registry value"/>
             </log>
             <!--Check if the header is located in the local registry entry-->
-            <filter xpath="boolean(get-property('hospitalSystem'))">
+            <filter xpath="boolean(get-property('ehrSystem'))">
                 <then>
                     <property expression="$url:patient" name="patient" scope="default" type="STRING"/>
                     <property expression="$url:id" name="id" scope="default" type="STRING"/>
                     <property expression="$url:startDate" name="startDate" scope="default" type="STRING"/>
                     <property expression="$url:endDate" name="endDate" scope="default" type="STRING"/>
-                    <switch source="$ctx:hospitalSystem">
+                    <switch source="$ctx:ehrSystem">
                         <case regex="Cerner">
                             <cerner.init>
                                 <base>https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca</base>
@@ -130,9 +130,9 @@
             <!--Capture the header from the request -->
             <property expression="$url:hospitalName" name="hospitalParam" scope="default" type="STRING"/>
             <!--Obtain the value for the respected header parameter-->
-            <property expression="get-property(get-property('hospitalParam'))" name="hospitalSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <property expression="get-property(get-property('hospitalParam'))" name="ehrSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
             <!--Check if the header is located in the local registry entry-->
-            <filter xpath="boolean(get-property('hospitalSystem'))">
+            <filter xpath="boolean(get-property('ehrSystem'))">
                 <then>
                     <property expression="$url:patient" name="patient" scope="default" type="STRING"/>
                     <property expression="$url:id" name="id" scope="default" type="STRING"/>
@@ -142,7 +142,7 @@
                     <property expression="$url:startEffectiveTime" name="startEffectiveTime" scope="default" type="STRING"/>
                     <property expression="$url:endEffectiveTime" name="endEffectiveTime" scope="default" type="STRING"/>
                     <property expression="$url:count" name="count" scope="default" type="STRING"/>
-                    <switch source="$ctx:hospitalSystem">
+                    <switch source="$ctx:ehrSystem">
                         <case regex="Cerner">
                             <cerner.init>
                                 <base>https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca</base>
@@ -186,12 +186,12 @@
             <!--Capture the header from the request -->
             <property expression="$url:hospitalName" name="hospitalParam" scope="default" type="STRING"/>
             <!--Obtain the value for the respected header parameter-->
-            <property expression="get-property(get-property('hospitalParam'))" name="hospitalSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <property expression="get-property(get-property('hospitalParam'))" name="ehrSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
             <!--Check if the header is located in the local registry entry-->
-            <filter xpath="boolean(get-property('hospitalSystem'))">
+            <filter xpath="boolean(get-property('ehrSystem'))">
                 <then>
                     <property expression="$url:id" name="id" scope="default" type="STRING"/>
-                    <switch source="$ctx:hospitalSystem">
+                    <switch source="$ctx:ehrSystem">
                         <case regex="Epic">
                             <epic.init>
                                 <base>https://open-ic.epic.com/FHIR/api/FHIR/DSTU2</base>

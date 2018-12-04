@@ -10,8 +10,8 @@
             <!--Capture the hospital name from the request -->
             <property expression="$url:hospitalName" name="hospitalParam" scope="default" type="STRING"/>
             <!--Obtain the value for the respected hospitalName parameter-->
-            <property expression="get-property(get-property('hospitalParam'))" name="hospitalSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
-            <filter xpath="boolean(get-property('hospitalSystem'))">
+            <property expression="get-property(get-property('hospitalParam'))" name="ehrSystem" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <filter xpath="boolean(get-property('ehrSystem'))">
                 <then>
                     <property expression="$url:id" name="id" scope="default" type="STRING"/>
                     <property expression="$url:patient" name="patient" scope="default" type="STRING"/>
@@ -19,7 +19,7 @@
                     <property expression="$url:endDate" name="endDate" scope="default" type="STRING"/>
                     <property expression="$url:udi" name="udi" scope="default" type="STRING"/>
                     <property expression="$url:deviceType" name="deviceType" scope="default" type="STRING"/>
-                    <switch source="$ctx:hospitalSystem">
+                    <switch source="$ctx:ehrSystem">
                         <case regex="Cerner">
                             <cerner.init>
                                 <base>https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca</base>
